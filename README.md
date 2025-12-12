@@ -3,6 +3,7 @@ Download `ogi.py` and keep it in the same directory as your script - it provides
 Use like
 ```
 from ogi import sendcmd, connect_OGI3
+```
 
 connect_OGI3()
 sendcmd('list OD cals')
