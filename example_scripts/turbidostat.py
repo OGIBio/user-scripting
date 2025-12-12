@@ -1,10 +1,15 @@
-import sys
+# This example toggles turbidostat target A between 0.3 and 0.8.
+# It can be used to get repeat growth curves.
+# To use, adjust the targets and initial settings as needed,
+# connect your PC to the bioreactor and run the script. It will start
+# the experiment for you.
+
 import time
-import serial as s
-import serial.tools.list_ports as stl
 import pandas as pd
 import matplotlib.pyplot as plt
 from ogi import sendcmd, connect_OGI3
+
+connect_OGI3()
 
 ## Pandas data frame
 c = ['time','OD A','target']

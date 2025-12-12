@@ -1,16 +1,12 @@
-import sys
+# This example shows how to set basic settings and start a batch culture experiment.
+# It will then plot the ODs.
+
 import time
-import serial as s
-import serial.tools.list_ports as stl
 import pandas as pd
 import matplotlib.pyplot as plt
 from ogi import sendcmd, connect_OGI3
 
 connect_OGI3()
-
-## Pandas data frame
-c = ['time','OD A','OD B','OD C','OD D']
-df = pd.DataFrame(columns=c, dtype=float)
 
 # example settings for batch culture
 sendcmd('choose OD cal 0')
@@ -22,10 +18,17 @@ sendcmd('set temp control target A 37')
 sendcmd('set temp control A 1')
 sendcmd('start batch culture')
 
+## Pandas data frame
+c = ['time','OD A','OD B','OD C','OD D']
+df = pd.DataFrame(columns=c, dtype=float)
+
 while(True):
     for r in ['A', 'B', 'C', 'D']:
         if (payload := sendcmd(f'get OD {r}')):    # read OD
+            # split payload into time and value:
             data = [[float(s) for s in payload.split(',')]]
+
+            # join to existing dataframe (note that `verify_integrity` prevents adding duplicates)
             tmp = pd.DataFrame(data, columns=['time', f'OD {r}'])
             df = pd.concat([df, tmp], ignore_index=True, verify_integrity=True)
 
@@ -41,6 +44,4 @@ while(True):
 
     plt.legend(['A','B','C','D'])
 
-    t = time.time()
-    while (time.time() - t < 5 * 60):
-        plt.pause(1)    # Need this to keep plot interactive
+    plt.pause(10)    # Need this to keep plot interactive
