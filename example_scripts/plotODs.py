@@ -1,7 +1,6 @@
 # This script shows how to plot the ODs of an already running experiment.
 # To use, start your experiment before running this script.
 
-import time
 import pandas as pd
 import matplotlib.pyplot as plt
 from ogi import sendcmd, connect_OGI3

@@ -1,18 +1,17 @@
 # This example shows how to set basic settings and start a batch culture experiment.
 # It will then plot the ODs.
 
-import time
 import pandas as pd
 import matplotlib.pyplot as plt
 from ogi import sendcmd, connect_OGI3
 
-connect_OGI3()
+connect_OGI3(verbose=True)
 
 # example settings for batch culture
 sendcmd('choose OD cal 0')
 sendcmd('set exp length 24')
-sendcmd('set sample rate 5')
-sendcmd('set motor A rpm 3000')
+sendcmd('set sample interval 5')
+sendcmd('set motor rpm A 3000')
 sendcmd('set ambient temp 23')
 sendcmd('set temp control target A 37')
 sendcmd('set temp control A 1')

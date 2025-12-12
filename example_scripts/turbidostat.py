@@ -54,6 +54,4 @@ while(True):
         sendcmd(f'set turbidostat target A {targethigh}')
         target = targethigh
 
-    t = time.time()
-    while (time.time() - t < 10):
-        plt.pause(1)    # Need this to keep plot interactive
+    plt.pause(10)    # Need this to keep plot interactive
