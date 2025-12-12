@@ -38,7 +38,7 @@ def sendcmd(cmd):
 
                 # success - return payload
                 return mystr.rstrip().partition(cmd)[2]
-    except:
+    except Exception as e:
         print("error, serial connection lost")
         if ("automatic_reconnect" in ogi_flags) and (
             "exit_on_fail_disconnect" not in ogi_flags
