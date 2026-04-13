@@ -43,4 +43,8 @@ Starts a batch culture at 30 C until OD=0.5, then increases temperature by 1 C p
 
 <img width="729" height="535" alt="temp_ramp_1" src="https://github.com/user-attachments/assets/9bc18f16-365c-45d7-a1d2-f3e0bd561427" />
 
+### `valentine_chemostat.py`
+Controls OD of two flasks via chemostat to generate a heart shape:
+
+<img width="822" height="591" alt="valentine" src="https://github.com/user-attachments/assets/8f3ff9d0-2a14-4ea2-a348-09bd9f1aa548" />
 
